@@ -1,0 +1,32 @@
+`````
+Name: objectName
+Value: @
+Position: 1, 5, 5
+Code:
+var x = 0
+
+input w
+move up
+
+input +
+x = x + 1
+
+when x == 3
+scene 2
+
+loop
+
+`````
+#####
+`````
+
+This is the first scene
+This is 4 lines high
+
+`````
+
+Second
+
+`````
+
+Third
