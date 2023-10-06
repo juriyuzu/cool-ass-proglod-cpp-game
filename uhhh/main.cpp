@@ -23,33 +23,27 @@ void display() {
         case 0:
             cout << "Welcome to The C++ Text-Based Game Engine!" << endl
                  << "\tmade by jryz" << endl << endl << endl
-                 << "Type [OK] to proceed..." << endl;
-            cin  >> x;
-            if (x == "OK") sd = 1;
+                 << "Press Enter to proceed..." << endl;
+            getline(cin, x, '\n');
+            if (x == "") sd = 1;
             break;
+
         case 1:
             ifstream filer("main.txt");
             while (getline(filer, line)) content.push_back(line);
             filer.close();
-            cout << "Type [Play] or [Edit], an underscore, then the corresponding number of your choice" << endl;
+            cout << "Type [Play] or [Edit], space, then the corresponding number of your choice" << endl;
             int num = 1;
             for (string i : content) cout << num++ << "\t| " << i << endl;
             cout << num++ << "\t| blank template..." << endl;
             content.clear();
-            cin >> x;
-            string xSub;
-            xSub = x.substr(0, 4);
-            string digits;
-            int uhh;
-            for (int i = 0; i < x.size(); i++) {
-                uhh = x[i] - '0';
-                if (isdigit(uhh)) digits += uhh;
-                else break;
-            }
-            int integer = stoi(digits);
-            if (xSub == "Play") cout << "yahallo" << integer;
-
-            cin >> x;
+            getline(cin, x, '\n');
+            stringstream iss(x);
+            string word[2];
+            int numb;
+            while (iss >> word[0]) try { numb = stoi(word[0]); } catch(exception) { word[1] = word[0]; }
+            // cout << numb << word[1] << endl; // debug
+            getline(cin, x, '\n'); // temp buffer
             break;
     }
 }
@@ -68,6 +62,9 @@ void play() {
 
 int main() {
     play();
+
+    return 0;
+}
 
     // ifstream fileR("file.txt");
     // vector<string> content;
@@ -89,6 +86,3 @@ int main() {
     //     }
     //     else if (c == 1) cout << s++ << '\t' << "|" << i << endl;
     // }
-
-    return 0;
-}
